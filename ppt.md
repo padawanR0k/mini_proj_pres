@@ -4,9 +4,8 @@ size: 16:10
 _class: lead
 paginate: true
 slide-transition: true
-# backgroundColor: #0093E9
-# backgroundImage: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-backgroundImage: url('https://64.media.tumblr.com/ee843139aadcb41fa338d57431c5ee9c/tumblr_oiwyu3PV5S1tf8vylo1_1280.png')
+# backgroundImage: url('https://64.media.tumblr.com/ee843139aadcb41fa338d57431c5ee9c/tumblr_oiwyu3PV5S1tf8vylo1_1280.png')
+backgroundImage: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)
 marp: true
 ---
 
@@ -19,80 +18,98 @@ marp: true
 
 
 ---
-# 내가 필요한 걸 만들자
-
-- ~~당근마켓 알림 서비스 중고나라, 번개장터 버전~~
-	- 생각할게 너무 많아서 취소
-- ~~일정시간마다 알림을 주는 스트레칭 알리미~~
-	- 응용프로그램으로 만드려고 하니, 처음 생각보다 어려워서 취소
+# 어떤걸 만들까
+#####  내가 필요한 걸 만들자
 - 챗봇
+	- 주고 받을 수 있는 콘텐츠와 형태가 다양하다.
 	- 자료도 많고, 혼자 할만 할거같다.
 	- 다른사람에게 공유하기 편하며 접근성이 편하다.
+	- ~~퇴실처리못해서 3번 결석처리..~~
+
 ---
-# 어떤 플랫폼을 고를까
+# 간단하게 챗봇이란?
+![left: 30%](./what_chatbot.png)
+- 유저의 요청없이 지정된 시간마다 특정행위를 하는것도 가능
 
-![bg left:30% 50%](https://www.flaticon.com/svg/static/icons/svg/2111/2111466.svg)
+
+---
+<!-- style: |
+  small {
+    font-size:20px
+  } -->
+# 어떤 플랫폼을 고를까 - 1
+![bg right:30% 50%](https://www.flaticon.com/svg/static/icons/svg/2111/2111466.svg)
+- 편한 접근성, 간단한 기능인 경우 웹플랫폼에서 직접 작성가능 ex) FAQ
+- 전화번호 계정하나가 더 필요한게 아니라, [카카오 개발자 플랫폼](https://i.kakao.com/)에서 계정 등록하여 사용가능
+- 계정 등록에 대한 권한심사 6일정도 소요. 기능이 많아 배우는데 오래 걸릴듯함
+---
+# 어떤 플랫폼을 고를까 - 2
 ![bg right:30% 50%](https://user-images.githubusercontent.com/819186/51553744-4130b580-1e7c-11e9-889e-486937b69475.png)
-###### 카톡
-- 관련 자료가 비교적 적음. 보낼 수 있는 메세지 형태가 슬랙보다 다양하지 않음
-- 전화번호가 하나 더 필요..
-
-###### 슬랙
 - 관련 자료가 비교적 많음. 보낼 수 있는 메세지 형태가 카톡보다 훨씬 다양함
-- 이메일만 있으면됨
+- 실제 스타트업에서 많이 쓰이며, 간단한 기능이나 프로덕트 모니터링을 위해서도 사용하는 경우도 있어 알아두면 좋을거같았음
+- cron job 가능
 
 ---
 # 슬랙 워크스페이스
-- https://playdatastubot.slack.com/archives/C01EY4N7CRX
+- [https://playdatastubot.slack.com/archives/C01EY4N7CRX](https://join.slack.com/t/playdatastubot/shared_invite/zt-j5v7vrt0-z9EneIf4nZjH~rUzdjhLpQ)
 	- [일반] 채널
 
 ---
 # 기능 1 - 특정 지역의 날씨정보 조회
 ![bg left:45% w:540](./feature_weather.webp)
-- 명령어
+- 사용예시
 	- `@playdata_stu_bot /날씨 서초구`
+	- `@playdata_stu_bot /날씨 도봉구 방학동`
 - 입력한 지역의 현재 날씨를 알려줍니다.
 
 
 ---
 # 기능 2 - 개발 블로그 포스트 조회
 ![bg left:45% w:540](./feature_blog_post.webp)
-- 명령어
+- 사용예시
 	- `@playdata_stu_bot /블로그`
-- 최근에 올라온 개발 관련 블로그 글들의 간단한 내용과와 링크를 알려줍니다.
+- 최근에 올라온 개발 관련 블로그 글들의 간단한 내용과 링크들의 리스트를 크롤링하여 가져온다.
+- 크롤링 추천
+	- [awesome-devblog](https://awesome-devblog.netlify.app/)
+	- [GeekNews](https://news.hada.io/weekly)
 
 ---
 # 기능 3 - 결석가능일 조회
 ![bg left:43% w:540](./feature_absent.webp)
-- 명령어
-	- `cnt`: 이번달 결석한 횟수
-	- `@playdata_stu_bot /결석 cnt`
+- 사용예시
+	- `@playdata_stu_bot /결석 1`
+	- `@playdata_stu_bot /결석 3`
 - 이번달 소정훈련일수와 이번달 결석한 횟수에 비례해서 재적위험까지 얼마나 남았는지 알려줌
 
 ---
 # 기능 4 - 기능 확인
 ![bg left:43% w:540](./feature_help.webp)
-- 명령어
+- 사용예시
 	- `@playdata_stu_bot /help`
 - 현재 봇에 등록된 기능들에 대한 설명서를 조회한다.
 
 ---
-<!-- _class: follow -->
-# 기능 5 - 퇴근처리 알림
+# cron 1 - 입퇴실 알림
 
 ![bg left:45% w:500](./feature_alram.png)
-- 슬랙봇이 매일 오후 6시에 알림을 보내준다.
-- ~~QR코드 이미지를 보내려고 했지만, 학원에서 금지하는 행위라 취소~~
+- 작동시간
+	- AM 8:50
+	- PM 18:00
+- 기능
+	- HRD 입퇴실 처리를 위한 QR코드를 이미지로 보내준다.
 
 ---
-# 기능 6 - 목 스트레칭 알림
+# cron 2 - 목 스트레칭 알림
 ![bg left:43% w:500](./feature_stretch.png)
-- 9~17시 각 1시간 마다 스트레칭을 하라는 알람을 보내준다. `N시 50분`
+- 작동시간
+	- 9~17시 한시간
+- 기능
+	- 목 스트레칭 알람과 자세를 판단할 수 있는 링크를 보내준다.
 
 ---
-# 기능 6_1 - 목 스트레칭 하기
+# cron 2_1 - 목 스트레칭
 ![bg left:45% w:550](./feature_stretch_fron.png)
-- google의 [teachable machine](https://teachablemachine.withgoogle.com/)을 활용한 신체 자세 감지
+- google의 [teachable machine](https://teachablemachine.withgoogle.com/)을 활용한 신체 자세 감지웹앱
 - [직접해보기](https://padawanr0k.github.io/tm_stretch_pos/)
 
 ---
@@ -104,13 +121,16 @@ marp: true
 - 배포 플랫폼
 	- [heroku](https://www.heroku.com/)(서버), [github pages](https://pages.github.com/)(프론트)
 ---
+# 프로젝트 일정
+![](./schedule.png)
+
+---
 # 느낀점
 - 장점
 	- 해보고 싶었던걸 마음대로 구현해 볼 수 있었다.
-	- 내가 하고싶을때만 할 수 있다는 점
 - 단점
 	- 혼자하려니까 뭘 어디부터 시작 해야할지 막막해서 힘들었다.
-	- 프로젝트에 대해서 하려는 동기가 잘 안생긴다.
+	- 처음 해보는 부분이라 삽질하는 부분이 많았어서 시간이 생각보다 오래 걸림
 ---
 
 <!--
